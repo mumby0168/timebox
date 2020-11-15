@@ -1,4 +1,6 @@
 using System;
+using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Timebox.Shared.DomainEvents.Interfaces;
@@ -16,8 +18,15 @@ namespace Timebox.Shared.DomainEvents
 
             return services;
         }
-        
-        
+
+        public static IServiceCollection AddDomainEventHandlers(this IServiceCollection services)
+        {
+            var assembly = Assembly.GetCallingAssembly();
+            services.Scan(selector => selector.FromAssemblies(assembly)
+                .AddClasses(c => c.AssignableTo(typeof(IDomainEventHandler<>))).AsImplementedInterfaces().WithTransientLifetime());
+            return services;
+        }
+
 
         public static IApplicationBuilder UseMessageBroker(this IApplicationBuilder app, Action<IMessageSubscriber> configure = null)
         {
