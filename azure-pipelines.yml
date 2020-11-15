@@ -10,10 +10,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+  - task: UseDotNet@2
+    inputs:
+      version: '5.0.x'
+      includePreviewVersions: true
   - task: DotNetCoreCLI@2
     inputs:
       command: 'build'
-      projects: 'timebox.sln'
+      projects: 'timebox.sln' 
   - task: DotNetCoreCLI@2
     inputs:
       command: 'test'
