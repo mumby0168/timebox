@@ -11,14 +11,17 @@ pool:
 
 steps:
   - task: UseDotNet@2
+    displayName: install dotnet 5.0
     inputs:
       version: '5.0.x'
       includePreviewVersions: true
   - task: DotNetCoreCLI@2
+    displayName: build timebox.sln
     inputs:
       command: 'build'
       projects: 'timebox.sln' 
   - task: DotNetCoreCLI@2
+    displayName: test timebox.sln
     inputs:
       command: 'test'
       projects: 'timebox.sln'
