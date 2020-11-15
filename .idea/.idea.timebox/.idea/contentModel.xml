@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+    <e p="$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.5.0/build/netcoreapp2.1" t="Include">
+      <e p="Microsoft.NET.Test.Sdk.Program.cs" t="Include" />
+    </e>
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.16.1/build/netcoreapp2.1/nunit.engine.api.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.16.1/build/netcoreapp2.1/nunit.engine.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.16.1/build/netcoreapp2.1/NUnit3.TestAdapter.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/nunit3testadapter/3.16.1/build/netcoreapp2.1/NUnit3.TestAdapter.pdb" t="Include" />
     <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.2/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.2/resharper-host/local/Transient/Rider/v202/SolutionCaches/_timebox.1945596403.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
@@ -23,7 +30,38 @@
               </e>
             </e>
           </e>
-          <e p="Shared" t="Include" />
+          <e p="Shared" t="Include">
+            <e p="Timebox.Shared" t="IncludeRecursive">
+              <e p="bin" t="ExcludeRecursive" />
+              <e p="Class1.cs" t="Include" />
+              <e p="DomainEvents" t="Include">
+                <e p="Extensions.cs" t="Include" />
+                <e p="Interfaces" t="Include">
+                  <e p="IDomainEvent.cs" t="Include" />
+                  <e p="IDomainEventHandler.cs" t="Include" />
+                  <e p="IMessageBroker.cs" t="Include" />
+                  <e p="IMessageKeyService.cs" t="Include" />
+                  <e p="IMessageSubscriber.cs" t="Include" />
+                  <e p="IMessageSubscription.cs" t="Include" />
+                  <e p="IModuleMessageRepository.cs" t="Include" />
+                  <e p="ModuleOwnerAttribute.cs" t="Include" />
+                </e>
+                <e p="MessageKeyService.cs" t="Include" />
+                <e p="MessageSubscription.cs" t="Include" />
+                <e p="ModuleMessageBroker.cs" t="Include" />
+                <e p="ModuleMessageRepository.cs" t="Include" />
+                <e p="ModuleMessageSubscriber.cs" t="Include" />
+              </e>
+              <e p="obj" t="ExcludeRecursive">
+                <e p="Debug" t="Include">
+                  <e p="net5.0" t="Include">
+                    <e p="Timebox.Shared.AssemblyInfo.cs" t="Include" />
+                  </e>
+                </e>
+              </e>
+              <e p="Timebox.Shared.csproj" t="IncludeRecursive" />
+            </e>
+          </e>
           <e p="Timebox.Api" t="IncludeRecursive">
             <e p="appsettings.Development.json" t="Include" />
             <e p="appsettings.json" t="Include" />
@@ -258,6 +296,32 @@
             <e p="Startup.cs" t="Include" />
             <e p="Timebox.Gui.csproj" t="IncludeRecursive" />
             <e p="WeatherForecast.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="tests" t="Include">
+        <e p="backend" t="Include">
+          <e p="Shared" t="Include">
+            <e p="Timebox.Shared.Tests" t="IncludeRecursive">
+              <e p="bin" t="ExcludeRecursive" />
+              <e p="DomainEvents" t="Include">
+                <e p="MessageKeyServiceTests.cs" t="Include" />
+                <e p="Models" t="Include">
+                  <e p="TestMessageType.cs" t="Include" />
+                </e>
+                <e p="ModuleMessageBrokerTests.cs" t="Include" />
+                <e p="ModuleMessageRepositoryTests.cs" t="Include" />
+                <e p="ModuleMessageSubscriberTests.cs" t="Include" />
+              </e>
+              <e p="obj" t="ExcludeRecursive">
+                <e p="Debug" t="Include">
+                  <e p="net5.0" t="Include">
+                    <e p="Timebox.Shared.Tests.AssemblyInfo.cs" t="Include" />
+                  </e>
+                </e>
+              </e>
+              <e p="Timebox.Shared.Tests.csproj" t="IncludeRecursive" />
+            </e>
           </e>
         </e>
       </e>
