@@ -1,8 +1,10 @@
 ﻿using System;
+using Timebox.Shared.DomainEvents.Interfaces;
 
 namespace Timebox.Shared
 {
-    public class Class1
+    public class SampleMessage : IDomainEvent
     {
+        public string Message { get; set; }
     }
 }
