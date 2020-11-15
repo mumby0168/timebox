@@ -13,8 +13,11 @@ namespace Timebox.Shared.DomainEvents
             services.AddSingleton<IMessageSubscriber, ModuleMessageSubscriber>();
             services.AddSingleton<IMessageBroker, ModuleMessageBroker>();
             services.AddSingleton<IMessageKeyService, MessageKeyService>();
+
             return services;
         }
+        
+        
 
         public static IApplicationBuilder UseMessageBroker(this IApplicationBuilder app, Action<IMessageSubscriber> configure = null)
         {

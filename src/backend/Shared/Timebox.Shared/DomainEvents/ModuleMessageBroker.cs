@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -12,12 +13,14 @@ namespace Timebox.Shared.DomainEvents
         private readonly IModuleMessageRepository _moduleMessageRepository;
         private readonly IMessageKeyService _messageKeyService;
         private readonly ILogger<ModuleMessageBroker> _logger;
+        private readonly IServiceProvider _serviceProvider;
 
-        public ModuleMessageBroker(IModuleMessageRepository moduleMessageRepository, IMessageKeyService messageKeyService, ILogger<ModuleMessageBroker> logger)
+        public ModuleMessageBroker(IModuleMessageRepository moduleMessageRepository, IMessageKeyService messageKeyService, ILogger<ModuleMessageBroker> logger, IServiceProvider serviceProvider)
         {
             _moduleMessageRepository = moduleMessageRepository;
             _messageKeyService = messageKeyService;
             _logger = logger;
+            _serviceProvider = serviceProvider;
         }
         
         public async Task PublishDomainEventAsync<T>(T @event) where T : IDomainEvent
@@ -36,8 +39,7 @@ namespace Timebox.Shared.DomainEvents
 
             foreach (var subscription in subscriptions)
             {
-                var handler = (dynamic)subscription.Handler;
-                await handler.HandleAsync(JsonSerializer.Deserialize(json, subscription.ParameterType));
+                await subscription.AsyncAction(JsonSerializer.Deserialize(json, subscription.SubscriptionType));
             }
         }
     }

@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Timebox.Shared.DomainEvents.Interfaces;
 
@@ -15,9 +17,9 @@ namespace Timebox.Shared.DomainEvents
             _dictionary = new Dictionary<string, List<IMessageSubscription>>();
         }
         
-        public void AddSubscriber<T>(string key, IDomainEventHandler<T> domainEventHandler) where T : IDomainEvent
+        public void AddSubscriber<T>(string key, Func<object, Task> action) where T : IDomainEvent
         {
-            var subscription = MessageSubscription.Create(domainEventHandler);
+            var subscription = MessageSubscription.Create<T>(action);
             if (_dictionary.ContainsKey(key))
             {
                 _dictionary[key].Add(subscription);

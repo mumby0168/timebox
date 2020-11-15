@@ -1,21 +1,21 @@
 using System;
+using System.Threading.Tasks;
 using Timebox.Shared.DomainEvents.Interfaces;
 
 namespace Timebox.Shared.DomainEvents
 {
+    
     public class MessageSubscription : IMessageSubscription
     {
-        private MessageSubscription(){}
-        public object Handler { get; set; }
-        public Type ParameterType { get; set; }
-
-        public static IMessageSubscription Create<T>(IDomainEventHandler<T> handler) where T : IDomainEvent
+        public static IMessageSubscription Create<T>(Func<object, Task> action) where T : IDomainEvent
         {
             return new MessageSubscription
             {
-                ParameterType = typeof(T),
-                Handler = handler
+                AsyncAction = action,
+                SubscriptionType = typeof(T)
             };
         }
+        public Func<object, Task> AsyncAction { get; private set; }
+        public Type SubscriptionType { get; private set; }
     }
 }

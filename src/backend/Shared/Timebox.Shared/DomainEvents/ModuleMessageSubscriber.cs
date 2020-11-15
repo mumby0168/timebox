@@ -28,7 +28,12 @@ namespace Timebox.Shared.DomainEvents
 
             var handler = (IDomainEventHandler<T>)_serviceProvider.GetService(typeToFind);
 
-            _moduleMessageRepository.AddSubscriber(key, handler);
+            if (handler is null)
+            {
+                throw new InvalidCastException();
+            }
+
+            _moduleMessageRepository.AddSubscriber<T>(key, obj=> handler.HandleAsync((T)obj));
             return this;
         }
     }

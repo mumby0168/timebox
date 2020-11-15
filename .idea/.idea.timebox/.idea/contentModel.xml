@@ -35,7 +35,6 @@
               <e p="bin" t="ExcludeRecursive" />
               <e p="Class1.cs" t="Include" />
               <e p="DomainEvents" t="Include">
-                <e p="DomainEventHelpers.cs" t="Include" />
                 <e p="Extensions.cs" t="Include" />
                 <e p="Interfaces" t="Include">
                   <e p="IDomainEvent.cs" t="Include" />
@@ -45,6 +44,7 @@
                   <e p="IMessageSubscriber.cs" t="Include" />
                   <e p="IMessageSubscription.cs" t="Include" />
                   <e p="IModuleMessageRepository.cs" t="Include" />
+                  <e p="ModuleOwnerAttribute.cs" t="Include" />
                 </e>
                 <e p="MessageKeyService.cs" t="Include" />
                 <e p="MessageSubscription.cs" t="Include" />
@@ -304,6 +304,15 @@
           <e p="Shared" t="Include">
             <e p="Timebox.Shared.Tests" t="IncludeRecursive">
               <e p="bin" t="ExcludeRecursive" />
+              <e p="DomainEvents" t="Include">
+                <e p="MessageKeyServiceTests.cs" t="Include" />
+                <e p="Models" t="Include">
+                  <e p="TestMessageType.cs" t="Include" />
+                </e>
+                <e p="ModuleMessageBrokerTests.cs" t="Include" />
+                <e p="ModuleMessageRepositoryTests.cs" t="Include" />
+                <e p="ModuleMessageSubscriberTests.cs" t="Include" />
+              </e>
               <e p="obj" t="ExcludeRecursive">
                 <e p="Debug" t="Include">
                   <e p="net5.0" t="Include">
@@ -312,7 +321,6 @@
                 </e>
               </e>
               <e p="Timebox.Shared.Tests.csproj" t="IncludeRecursive" />
-              <e p="UnitTest1.cs" t="Include" />
             </e>
           </e>
         </e>

@@ -13,6 +13,7 @@ using Timebox.Shared.DomainEvents.Interfaces;
 
 namespace Timebox.Api
 {
+    [ModuleOwner("Test")]
     public class SampleMessage : IDomainEvent
     {
         public string Message { get; set; }
@@ -20,10 +21,9 @@ namespace Timebox.Api
 
     public class SampleMessageHandler : IDomainEventHandler<SampleMessage>
     {
-        public Task HandleAsync(object domainEvent)
+        public Task HandleAsync(SampleMessage domainEvent)
         {
-            var message = DomainEventHelpers.Marshall<SampleMessage>(domainEvent);
-            if (message is null)
+            if (domainEvent is null)
             {
                 throw new InvalidCastException();
             }
@@ -63,7 +63,7 @@ namespace Timebox.Api
             });
 
             var broker = app.ApplicationServices.GetRequiredService<IMessageBroker>();
-            broker.PublishDomainEventAsync(new Timebox.Shared.SampleMessage {Message = "Hello World"});
+            broker.PublishDomainEventAsync(new Timebox.Shared.SampleMessage {Message = "Hello World"}).Wait();
         }
     }
 }

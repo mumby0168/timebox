@@ -1,11 +1,12 @@
 using System;
+using System.Threading.Tasks;
 
 namespace Timebox.Shared.DomainEvents.Interfaces
 {
     public interface IMessageSubscription
     {
-        object Handler { get; set; }
+        Func<object, Task> AsyncAction { get; }
         
-        Type ParameterType { get; set; }
+        Type SubscriptionType { get; }
     }
 }
