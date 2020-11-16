@@ -2,8 +2,8 @@
 
 namespace Timebox.Account.Application.Interfaces.Services
 {
-    public interface IEmailService
+    public interface IPhoneService
     {
-        bool IsValidEmailAddress(string email);
+        bool IsValidPhoneNumber(string mobileNumber);
     }
 }
