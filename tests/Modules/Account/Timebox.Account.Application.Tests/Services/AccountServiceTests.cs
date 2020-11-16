@@ -11,6 +11,7 @@ using Timebox.Account.Domain.Entities;
 
 namespace Timebox.Account.Application.Tests.Services
 {
+    [TestFixture]
     public class AccountServiceTests
     {
         private AutoMocker _mocker;
@@ -37,7 +38,7 @@ namespace Timebox.Account.Application.Tests.Services
             _mocker.GetMock<IPasswordService>().Setup(ps => ps.IsStrongPassword(_password))
                 .Returns(true);
 
-            _mocker.GetMock<IPasswordService>().Setup(ps => ps.HashPassword(_password))
+            _mocker.GetMock<IPasswordService>().Setup(ps => ps.HashPassword(_password, It.IsAny<string>(), It.IsAny<int?>()))
                 .Returns(_hashedPassword);
 
             _mocker.GetMock<IEmailService>().Setup(es => es.IsValidEmailAddress(_email))
@@ -77,7 +78,7 @@ namespace Timebox.Account.Application.Tests.Services
             _mocker.GetMock<IPasswordService>().Setup(ps => ps.IsStrongPassword(_password))
                 .Returns(true);
 
-            _mocker.GetMock<IPasswordService>().Setup(ps => ps.HashPassword(_password))
+            _mocker.GetMock<IPasswordService>().Setup(ps => ps.HashPassword(_password, It.IsAny<string>(), It.IsAny<int?>()))
                 .Returns(_hashedPassword);
 
             _mocker.GetMock<IEmailService>().Setup(es => es.IsValidEmailAddress(_email))
@@ -113,7 +114,7 @@ namespace Timebox.Account.Application.Tests.Services
             _mocker.GetMock<IPasswordService>().Setup(ps => ps.IsStrongPassword(_password))
                 .Returns(false);
 
-            _mocker.GetMock<IPasswordService>().Setup(ps => ps.HashPassword(_password))
+            _mocker.GetMock<IPasswordService>().Setup(ps => ps.HashPassword(_password, It.IsAny<string>(), It.IsAny<int?>()))
                 .Returns(_hashedPassword);
 
             _mocker.GetMock<IEmailService>().Setup(es => es.IsValidEmailAddress(_email))
@@ -149,7 +150,7 @@ namespace Timebox.Account.Application.Tests.Services
             _mocker.GetMock<IPasswordService>().Setup(ps => ps.IsStrongPassword(_password))
                 .Returns(true);
 
-            _mocker.GetMock<IPasswordService>().Setup(ps => ps.HashPassword(_password))
+            _mocker.GetMock<IPasswordService>().Setup(ps => ps.HashPassword(_password, It.IsAny<string>(), It.IsAny<int?>()))
                 .Returns(_hashedPassword);
 
             _mocker.GetMock<IEmailService>().Setup(es => es.IsValidEmailAddress(_email))
@@ -185,7 +186,7 @@ namespace Timebox.Account.Application.Tests.Services
             _mocker.GetMock<IPasswordService>().Setup(ps => ps.IsStrongPassword(_password))
                 .Returns(true);
 
-            _mocker.GetMock<IPasswordService>().Setup(ps => ps.HashPassword(_password))
+            _mocker.GetMock<IPasswordService>().Setup(ps => ps.HashPassword(_password, It.IsAny<string>(), It.IsAny<int?>()))
                 .Returns(_hashedPassword);
 
             _mocker.GetMock<IEmailService>().Setup(es => es.IsValidEmailAddress(_email))
