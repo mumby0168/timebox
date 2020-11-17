@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Timebox.Backlog.Api;
 using Timebox.Modules.Events;
 using Timebox.Sample.Api;
 
@@ -17,6 +18,7 @@ namespace Timebox.Api
         {
             services.AddDomainEvents();
             services.AddSampleModule();
+            services.AddBacklogModule();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -28,6 +30,7 @@ namespace Timebox.Api
             }
 
             app.UseSampleModule();
+            app.UseBacklogModule();
             
             app.UseRouting();
 
