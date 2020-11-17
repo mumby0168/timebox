@@ -75,12 +75,3 @@ This section will tie all of the other projects together and declare the transpo
 This could use for example a ASP.NET CORE Controller to receive and response to request from a client.
 
 > This can reference *ALL* of the projects listed above.
-
-### Timebox.Appointment.Shared (Beta Idea)
-This will allow a module to define interfaces that can be implemented in either the ```Infastructure``` or the ```Application``` layer.
-
-These interfaces can define a way to query the module for data such as getting the appointments for a user.
-
-This can also defines any data types that need to be shared as part of this interface in the form of DTO's.
-
-> This should *NOT* define any write operations to the module as these must be handled by events pubished by a module and subscribed by another.
