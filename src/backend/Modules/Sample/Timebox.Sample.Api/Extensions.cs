@@ -5,7 +5,7 @@ using Timebox.Modules.Events;
 using Timebox.Modules.Requests;
 using Timebox.Modules.Requests.Interfaces;
 using Timebox.Sample.Api.Handlers.Requests;
-using Timebox.Shared.Module.Requests.Requests.Sample;
+using Timebox.Shared.Kernel.Requests.Sample;
 
 namespace Timebox.Sample.Api
 {

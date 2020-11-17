@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Timebox.Modules.Requests.Interfaces;
-using Timebox.Shared.Module.Requests.Requests.Sample;
+using Timebox.Shared.Kernel.Requests.Sample;
 
 namespace Timebox.Sample.Api.Handlers.Requests
 {
