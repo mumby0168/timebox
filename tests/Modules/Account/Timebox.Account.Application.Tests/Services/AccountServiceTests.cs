@@ -4,6 +4,7 @@ using Moq;
 using Moq.AutoMock;
 using NUnit.Framework;
 using Shouldly;
+using Timebox.Account.Application.DTOs;
 using Timebox.Account.Application.Interfaces.Repositories;
 using Timebox.Account.Application.Interfaces.Services;
 using Timebox.Account.Application.Services;
@@ -49,7 +50,7 @@ namespace Timebox.Account.Application.Tests.Services
 
             
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(_email,  _mobileNumber, _password);
+            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDTO(_email,  _mobileNumber, _password));
 
             //Assert
             _mocker.GetMock<IAccountRepository>()
@@ -88,7 +89,7 @@ namespace Timebox.Account.Application.Tests.Services
                 .Returns(true);
 
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(_email,  _mobileNumber, _password);
+            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDTO(_email,  _mobileNumber, _password));
 
             //Assert
             _mocker.GetMock<IAccountRepository>()
@@ -124,7 +125,7 @@ namespace Timebox.Account.Application.Tests.Services
                 .Returns(true);
             
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(_email,  _mobileNumber, _password);
+            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDTO(_email,  _mobileNumber, _password));
 
             //Assert
             _mocker.GetMock<IPasswordService>()
@@ -160,7 +161,7 @@ namespace Timebox.Account.Application.Tests.Services
                 .Returns(true);
             
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(_email,  _mobileNumber, _password);
+            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDTO(_email,  _mobileNumber, _password));
 
             //Assert
             _mocker.GetMock<IEmailService>()
@@ -196,7 +197,7 @@ namespace Timebox.Account.Application.Tests.Services
                 .Returns(false);
             
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(_email,  _mobileNumber, _password);
+            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDTO(_email,  _mobileNumber, _password));
 
             //Assert
             _mocker.GetMock<IPhoneService>()

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Timebox.Account.Application.DTOs;
 using Timebox.Account.Application.Interfaces.Repositories;
 using Timebox.Account.Application.Interfaces.Services;
 using Timebox.Account.Domain.Entities;
@@ -20,21 +21,21 @@ namespace Timebox.Account.Application.Services
             _phoneService = phoneService;
         }
         
-        public async Task<AccountEntity> CreateAccountAsync(string email, string mobileNumber, string password)
+        public async Task<AccountEntity> CreateAccountAsync(CreateAccountDTO createAccountDto)
         {
-            if (!_emailService.IsValidEmailAddress(email))
+            if (!_emailService.IsValidEmailAddress(createAccountDto.Email))
                 return null; //ToDo: Throw
 
-            if (!_passwordService.IsStrongPassword(password))
+            if (!_passwordService.IsStrongPassword(createAccountDto.Password))
                 return null; //ToDo: Throw
 
-            if (!_phoneService.IsValidPhoneNumber(mobileNumber))
+            if (!_phoneService.IsValidPhoneNumber(createAccountDto.MobileNumber))
                 return null; //ToDo: Throw
             
-            if (await _accountRepository.DoesAccountExistAsync(email))
+            if (await _accountRepository.DoesAccountExistAsync(createAccountDto.Email))
                 return null; //ToDo: Throw
 
-            var accountEntity = new AccountEntity(email, mobileNumber, _passwordService.HashPassword(password));
+            var accountEntity = new AccountEntity(createAccountDto.Email, createAccountDto.MobileNumber, _passwordService.HashPassword(createAccountDto.Password));
             await _accountRepository.CreateAccountAsync(accountEntity);
 
             return accountEntity;

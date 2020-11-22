@@ -8,4 +8,8 @@
     <ProjectReference Include="..\Timebox.Account.Application.Interfaces\Timebox.Account.Application.Interfaces.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="libphonenumber-csharp" Version="8.12.11" />
+  </ItemGroup>
+
 </Project>
