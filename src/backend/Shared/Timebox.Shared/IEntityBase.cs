@@ -4,6 +4,6 @@ namespace Timebox.Shared
 {
     public interface IEntityBase
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; }
     }
 }

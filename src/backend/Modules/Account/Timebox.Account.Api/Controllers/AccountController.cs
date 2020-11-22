@@ -16,9 +16,9 @@ namespace Timebox.Account.Api.Controllers
         }
         
         [HttpPost]
-        public async Task<JsonResult> CreateAccount([FromBody] CreateAccountDTO createAccountDto)
+        public async Task<IActionResult> CreateAccount([FromBody] CreateAccountDTO createAccountDto)
         {
-            return AccountCreatedDTO.FromEntity(await _accountService.CreateAccountAsync(createAccountDto)).ToJsonResult();
+            return Ok(AccountCreatedDto.FromEntity(await _accountService.CreateAccountAsync(createAccountDto)));
         }
     }
 }
