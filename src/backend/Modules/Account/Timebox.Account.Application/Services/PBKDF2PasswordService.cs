@@ -12,6 +12,11 @@ namespace Timebox.Account.Application.Services
         private const int _saltLength = 32;
         private const int _base64IterationsLength = 8;
         
+        /// <summary>
+        /// Checks that the password is considered strong. Requires at least 1 number 1 special character (_!@#$&*) and at lease 1 upper case character. Also requires a minimum length of 8.
+        /// </summary>
+        /// <param name="password">Un-hashed password.</param>
+        /// <returns></returns>
         public bool IsStrongPassword(string password)
         {
             return Regex.IsMatch(password, @"^(?=.*[A-Z])(?=.*[_!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z]).{8,}$");
