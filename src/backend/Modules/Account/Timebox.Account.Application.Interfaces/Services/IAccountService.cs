@@ -6,6 +6,6 @@ namespace Timebox.Account.Application.Interfaces.Services
 {
     public interface IAccountService
     {
-        Task<AccountEntity> CreateAccountAsync(CreateAccountDTO createAccountDto);
+        Task<AccountEntity> CreateAccountAsync(CreateAccountDto createAccountDto);
     }
 }

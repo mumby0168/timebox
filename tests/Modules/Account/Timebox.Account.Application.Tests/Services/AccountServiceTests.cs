@@ -50,7 +50,7 @@ namespace Timebox.Account.Application.Tests.Services
 
             
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDTO(_email,  _mobileNumber, _password));
+            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email,  _mobileNumber, _password));
 
             //Assert
             _mocker.GetMock<IAccountRepository>()
@@ -89,7 +89,7 @@ namespace Timebox.Account.Application.Tests.Services
                 .Returns(true);
 
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDTO(_email,  _mobileNumber, _password));
+            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email,  _mobileNumber, _password));
 
             //Assert
             _mocker.GetMock<IAccountRepository>()
@@ -125,7 +125,7 @@ namespace Timebox.Account.Application.Tests.Services
                 .Returns(true);
             
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDTO(_email,  _mobileNumber, _password));
+            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email,  _mobileNumber, _password));
 
             //Assert
             _mocker.GetMock<IPasswordService>()
@@ -161,7 +161,7 @@ namespace Timebox.Account.Application.Tests.Services
                 .Returns(true);
             
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDTO(_email,  _mobileNumber, _password));
+            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email,  _mobileNumber, _password));
 
             //Assert
             _mocker.GetMock<IEmailService>()
@@ -197,7 +197,7 @@ namespace Timebox.Account.Application.Tests.Services
                 .Returns(false);
             
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDTO(_email,  _mobileNumber, _password));
+            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email,  _mobileNumber, _password));
 
             //Assert
             _mocker.GetMock<IPhoneService>()

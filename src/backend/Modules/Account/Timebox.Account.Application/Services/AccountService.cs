@@ -21,7 +21,7 @@ namespace Timebox.Account.Application.Services
             _phoneService = phoneService;
         }
         
-        public async Task<AccountEntity> CreateAccountAsync(CreateAccountDTO createAccountDto)
+        public async Task<AccountEntity> CreateAccountAsync(CreateAccountDto createAccountDto)
         {
             if (!_emailService.IsValidEmailAddress(createAccountDto.Email))
                 return null; //ToDo: Throw
