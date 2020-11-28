@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Timebox.Shared.Events\Timebox.Shared.Events.csproj" />
     <ProjectReference Include="..\..\..\Shared\Timebox.Shared.Kernel\Timebox.Shared.Kernel.csproj" />
   </ItemGroup>
 
