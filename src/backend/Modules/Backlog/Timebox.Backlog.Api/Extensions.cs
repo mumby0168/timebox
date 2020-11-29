@@ -4,6 +4,7 @@ using Convey;
 using Convey.Persistence.MongoDB;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Timebox.Backlog.Api.Middleware;
 using Timebox.Backlog.Application.Interfaces.Repositories;
 using Timebox.Backlog.Application.Interfaces.Services;
 using Timebox.Backlog.Application.Services;
@@ -28,11 +29,13 @@ namespace Timebox.Backlog.Api
             services.AddTransient<IBacklogRepository, MongoBacklogRepository>();
             services.AddTransient<IBacklogAggregate, BacklogAggregate>();
             services.AddSingleton<IUserService, UserService>();
+            services.AddTransient<BacklogModuleExceptionHandler>();
             return services;
         }
 
         public static IApplicationBuilder UseBacklogModule(this IApplicationBuilder app)
         {
+            app.UseMiddleware<BacklogModuleExceptionHandler>();
             return app;
         }
     }

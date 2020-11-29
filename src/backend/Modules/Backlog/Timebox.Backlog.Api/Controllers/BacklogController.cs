@@ -16,12 +16,7 @@ namespace Timebox.Backlog.Api.Controllers
             _backlogService = backlogService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Health()
-        {
-            return Ok("hi");
-        }
-        
+        [HttpPost]
         public async Task<IActionResult> CreateBacklogAsync([FromBody] CreateBacklogDto dto)
         {
             await _backlogService.CreateAsync(dto);

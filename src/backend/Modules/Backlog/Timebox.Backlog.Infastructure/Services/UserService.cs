@@ -8,7 +8,8 @@ namespace Timebox.Backlog.Infastructure.Services
     {
         public Task<Guid> GetAccountIdForCurrentUserAsync()
         {
-            throw new NotImplementedException();
+            //TODO: replace this with some code from rob
+            return Task.FromResult(Guid.NewGuid());
         }
     }
 }
