@@ -16,6 +16,10 @@ namespace Timebox.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddControllers();
+            
+            //Modules
             services.AddDomainEvents();
             services.AddSampleModule();
             services.AddBacklogModule();
@@ -29,13 +33,15 @@ namespace Timebox.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            //Modules
             app.UseSampleModule();
             app.UseBacklogModule();
-            
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync("Hello World!");

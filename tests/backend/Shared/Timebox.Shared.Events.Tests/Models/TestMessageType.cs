@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Timebox.Modules.Events.Interfaces;
+using Timebox.Shared.Modules;
 
 namespace Timebox.Module.Events.Tests.Models
 {

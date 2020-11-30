@@ -4,4 +4,14 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Convey" Version="0.4.401" />
+    <PackageReference Include="Convey.Persistence.MongoDB" Version="0.4.401" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Timebox.Backlog.Application.Interfaces\Timebox.Backlog.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\Timebox.Backlog.Domain\Timebox.Backlog.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
