@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Modules\Backlog\Timebox.Backlog.Api\Timebox.Backlog.Api.csproj" />
     <ProjectReference Include="..\Modules\Sample\Timebox.Sample.Api\Timebox.Sample.Api.csproj" />
     <ProjectReference Include="..\Shared\Timebox.Shared.Events\Timebox.Shared.Events.csproj" />
     <ProjectReference Include="..\Shared\Timebox.Shared\Timebox.Shared.csproj" />

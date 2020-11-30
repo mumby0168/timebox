@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Convey.Persistence.MongoDB" Version="0.4.401" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Timebox.Backlog.Application\Timebox.Backlog.Application.csproj" />
+    <ProjectReference Include="..\Timebox.Backlog.Domain\Timebox.Backlog.Domain.csproj" />
+    <ProjectReference Include="..\Timebox.Backlog.Infastructure\Timebox.Backlog.Infastructure.csproj" />
+    
+  </ItemGroup>
+  
+
+</Project>
