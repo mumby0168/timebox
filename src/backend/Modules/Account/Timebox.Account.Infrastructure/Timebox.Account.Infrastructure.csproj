@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Convey.Persistence.MongoDB" Version="0.4.401" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Timebox.Account.Application.Interfaces\Timebox.Account.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\Timebox.Account.Domain\Timebox.Account.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
