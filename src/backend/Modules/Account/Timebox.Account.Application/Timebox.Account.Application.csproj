@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Timebox.Account.Application.Interfaces\Timebox.Account.Application.Interfaces.csproj" />
+    <ProjectReference Include="..\Timebox.Account.Domain\Timebox.Account.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System.Reflection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Timebox.Account.Application.Interfaces.Repositories;
 using Timebox.Account.Application.Interfaces.Services;
@@ -13,12 +14,14 @@ namespace Timebox.Account.Api
         public static IServiceCollection AddAccountModule(this IServiceCollection services)
         {
             services.AddAccountModuleInfrastructure();
-            
+
             services.AddSingleton<IPasswordService, PBKDF2PasswordService>();
             services.AddSingleton<IEmailService, EmailService>();
             services.AddSingleton<IPhoneService, PhoneService>();
             services.AddSingleton<IAccountService, AccountService>();
             services.AddSingleton<IAccountRepository, AccountRepository>();
+
+            services.AddControllers().AddApplicationPart(Assembly.GetExecutingAssembly()).AddControllersAsServices();
             
             return services;
         }

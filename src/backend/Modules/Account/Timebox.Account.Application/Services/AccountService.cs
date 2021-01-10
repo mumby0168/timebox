@@ -3,6 +3,7 @@ using Timebox.Account.Application.DTOs;
 using Timebox.Account.Application.Interfaces.Repositories;
 using Timebox.Account.Application.Interfaces.Services;
 using Timebox.Account.Domain.Entities;
+using Timebox.Account.Domain.Exceptions;
 
 namespace Timebox.Account.Application.Services
 {
@@ -24,16 +25,16 @@ namespace Timebox.Account.Application.Services
         public async Task<AccountEntity> CreateAccountAsync(CreateAccountDto createAccountDto)
         {
             if (!_emailService.IsValidEmailAddress(createAccountDto.Email))
-                return null; //ToDo: Throw
+                throw new InvalidEmailException(createAccountDto.Email);
 
             if (!_passwordService.IsStrongPassword(createAccountDto.Password))
-                return null; //ToDo: Throw
+                throw new WeakPasswordException();
 
             if (!_phoneService.IsValidPhoneNumber(createAccountDto.MobileNumber))
-                return null; //ToDo: Throw
-            
+                throw new InvalidPhoneNumberException(createAccountDto.MobileNumber);
+
             if (await _accountRepository.DoesAccountExistAsync(createAccountDto.Email))
-                return null; //ToDo: Throw
+                throw new AccountExistsException(createAccountDto.Email);
 
             var accountEntity = new AccountEntity(createAccountDto.Email, createAccountDto.MobileNumber, _passwordService.HashPassword(createAccountDto.Password));
             await _accountRepository.CreateAccountAsync(accountEntity);
