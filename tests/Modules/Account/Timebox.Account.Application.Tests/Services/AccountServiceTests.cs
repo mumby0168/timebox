@@ -9,6 +9,7 @@ using Timebox.Account.Application.Interfaces.Repositories;
 using Timebox.Account.Application.Interfaces.Services;
 using Timebox.Account.Application.Services;
 using Timebox.Account.Domain.Entities;
+using Timebox.Account.Domain.Exceptions;
 
 namespace Timebox.Account.Application.Tests.Services
 {
@@ -89,7 +90,7 @@ namespace Timebox.Account.Application.Tests.Services
                 .Returns(true);
 
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email,  _mobileNumber, _password));
+            await Should.ThrowAsync<AccountExistsException>(async () => await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email,  _mobileNumber, _password)));
 
             //Assert
             _mocker.GetMock<IAccountRepository>()
@@ -99,8 +100,6 @@ namespace Timebox.Account.Application.Tests.Services
                 .Verify(ar => ar.CreateAccountAsync(It.Is<AccountEntity>(ae => ae.Email == _email
                                                                                && ae.HashedPassword == _hashedPassword
                                                                                && ae.MobileNumber == _mobileNumber)), Times.Never);
-            
-            accountEntity.ShouldBeNull();
         }
         
         [Test]
@@ -123,9 +122,9 @@ namespace Timebox.Account.Application.Tests.Services
             
             _mocker.GetMock<IPhoneService>().Setup(ps => ps.IsValidPhoneNumber(_mobileNumber))
                 .Returns(true);
-            
+
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email,  _mobileNumber, _password));
+            await Should.ThrowAsync<WeakPasswordException>(async () => await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email, _mobileNumber, _password)));
 
             //Assert
             _mocker.GetMock<IPasswordService>()
@@ -135,8 +134,6 @@ namespace Timebox.Account.Application.Tests.Services
                 .Verify(ar => ar.CreateAccountAsync(It.Is<AccountEntity>(ae => ae.Email == _email
                                                                                && ae.HashedPassword == _hashedPassword
                                                                                && ae.MobileNumber == _mobileNumber)), Times.Never);
-            
-            accountEntity.ShouldBeNull();
         }
         
         [Test]
@@ -159,9 +156,9 @@ namespace Timebox.Account.Application.Tests.Services
             
             _mocker.GetMock<IPhoneService>().Setup(ps => ps.IsValidPhoneNumber(_mobileNumber))
                 .Returns(true);
-            
+
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email,  _mobileNumber, _password));
+            await Should.ThrowAsync<InvalidEmailException>(async () => await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email, _mobileNumber, _password)));
 
             //Assert
             _mocker.GetMock<IEmailService>()
@@ -171,8 +168,6 @@ namespace Timebox.Account.Application.Tests.Services
                 .Verify(ar => ar.CreateAccountAsync(It.Is<AccountEntity>(ae => ae.Email == _email
                                                                                && ae.HashedPassword == _hashedPassword
                                                                                && ae.MobileNumber == _mobileNumber)), Times.Never);
-            
-            accountEntity.ShouldBeNull();
         }
         
         [Test]
@@ -195,9 +190,9 @@ namespace Timebox.Account.Application.Tests.Services
             
             _mocker.GetMock<IPhoneService>().Setup(ps => ps.IsValidPhoneNumber(_mobileNumber))
                 .Returns(false);
-            
+
             //Act
-            var accountEntity = await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email,  _mobileNumber, _password));
+            await Should.ThrowAsync<InvalidPhoneNumberException>(async () => await serviceUnderTest.CreateAccountAsync(new CreateAccountDto(_email, _mobileNumber, _password)));
 
             //Assert
             _mocker.GetMock<IPhoneService>()
@@ -207,8 +202,6 @@ namespace Timebox.Account.Application.Tests.Services
                 .Verify(ar => ar.CreateAccountAsync(It.Is<AccountEntity>(ae => ae.Email == _email
                                                                                && ae.HashedPassword == _hashedPassword
                                                                                && ae.MobileNumber == _mobileNumber)), Times.Never);
-            
-            accountEntity.ShouldBeNull();
         }
         
         private IAccountService CreateServiceUnderTest() => _mocker.CreateInstance<AccountService>();
